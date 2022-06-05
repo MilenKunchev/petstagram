@@ -1,6 +1,6 @@
 from django.core.validators import MinLengthValidator
 from django.db import models
-from petstagram.main.validators import only_letters_validator
+from petstagram.main.validators import validate_only_letters, validate_file_max_size_in_mb
 
 
 # Create your models here.
@@ -23,7 +23,7 @@ class Profile(models.Model):
         max_length=FIRST_NAME_MAX_LENGTH,
         validators=(
             MinLengthValidator(FIRST_NAME_MIN_LENGTH),
-            only_letters_validator,
+            validate_only_letters,
         )
     )
 
@@ -31,7 +31,7 @@ class Profile(models.Model):
         max_length=LAST_NAME_MAX_LENGTH,
         validators=(
             MinLengthValidator(LAST_NAME_MIN_LENGTH),
-            only_letters_validator,
+            validate_only_letters,
         )
 
     )
@@ -45,7 +45,7 @@ class Profile(models.Model):
         # <-----
     )
 
-    description = models.DateField(
+    description = models.TextField(
         null=True,
         blank=True,
     )
@@ -61,6 +61,9 @@ class Profile(models.Model):
         null=True,
         blank=True,
     )
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
 
 
 class Pet(models.Model):
@@ -93,6 +96,35 @@ class Pet(models.Model):
         on_delete=models.CASCADE,
     )
 
+    def __str__(self):
+        return f'{self.type} {self.name} ' \
+               f'With owner : {self.user_profile.first_name} {self.user_profile.last_name}'
+
     # Meta  for unique
     class Meta:
         unique_together = ('user_profile', 'name')
+
+
+class PetPhoto(models.Model):
+    photo = models.ImageField(
+        validators=(
+            validate_file_max_size_in_mb,
+        )
+    )
+
+    tagged_pets = models.ManyToManyField(
+        Pet,
+    )
+
+    description = models.TextField(
+        null=True,
+        blank=True,
+    )
+
+    publication_date = models.DateTimeField(
+        auto_now_add=True,
+    )
+
+    likes = models.IntegerField(
+        default=0,
+    )

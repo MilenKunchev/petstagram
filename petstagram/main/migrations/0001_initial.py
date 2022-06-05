@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
             name='Profile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=30, validators=[django.core.validators.MinLengthValidator(2), petstagram.main.validators.only_letters_validator])),
-                ('last_name', models.CharField(max_length=30, validators=[django.core.validators.MinLengthValidator(2), petstagram.main.validators.only_letters_validator])),
+                ('first_name', models.CharField(max_length=30, validators=[django.core.validators.MinLengthValidator(2), petstagram.main.validators.validate_only_letters])),
+                ('last_name', models.CharField(max_length=30, validators=[django.core.validators.MinLengthValidator(2), petstagram.main.validators.validate_only_letters])),
                 ('picture', models.URLField()),
                 ('date_of_birth', models.DateField(blank=True, null=True)),
                 ('description', models.DateField(blank=True, null=True)),
