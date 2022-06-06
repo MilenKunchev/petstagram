@@ -1,0 +1,15 @@
+
+Django models migration:
+from search in PyCharm search for manage.py -> run manage.py Task / ctr + alt + R
+'makemigration'         ---> create migrations to folder migrations
+'migrate'               ---> apply migrations
+----> YouTube search: Working With Django Models in PyCharm Professional
+
+'createsuperuser"       ---> Create super User
+
+Class Meta is used for unique columns
+
+HTML файловете на съответтния app се записват в папка project name/app name/templates/*.html
+views.py --> from django.shortcuts import render 
+  def show_home
+main/urls.py -->
