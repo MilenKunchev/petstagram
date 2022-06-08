@@ -1,11 +1,12 @@
 
 Django models migration:
+manage.py --> Tools->run manage.py Task
 from search in PyCharm search for manage.py -> run manage.py Task / ctr + alt + R
 'makemigration'         ---> create migrations to folder migrations
 'migrate'               ---> apply migrations
 ----> YouTube search: Working With Django Models in PyCharm Professional
 
-'createsuperuser"       ---> Create super User
+'createsuperuser'       ---> Create super User
 
 Class Meta is used for unique columns
 
@@ -13,3 +14,7 @@ HTML файловете на съответтния app се записват в
 views.py --> from django.shortcuts import render 
   def show_home
 main/urls.py -->
+
+
+За да ограничим кои менюта да се виждат и кои не в зависимост дали има логнат потребител създаваме
+папка Python Package main\templatetags\  нея файл  profiles.py

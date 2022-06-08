@@ -5,11 +5,17 @@ view  е фунция която взима параметър  request  и вр
 
 
 def show_home(request):
-    return render(request, 'home_page.html')
+    context = {
+        'hide_additional_nav_items': True
+    }
+    return render(request, 'home_page.html', context)
 
 
 def show_dashboard(request):
-    return render(request, 'dashboard.html')
+    context = {
+
+    }
+    return render(request, 'dashboard.html', context)
 
 
 def show_profile(request):
