@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.validators import MinLengthValidator
 from django.db import models
 from petstagram.main.validators import validate_only_letters, validate_file_max_size_in_mb
@@ -99,6 +101,10 @@ class Pet(models.Model):
     def __str__(self):
         return f'{self.type} {self.name} ' \
                f'With owner : {self.user_profile.first_name} {self.user_profile.last_name}'
+
+    @property
+    def age(self):
+        return datetime.datetime.now().year - self.date_of_birth.year
 
     # Meta  for unique
     class Meta:
