@@ -15,6 +15,9 @@ views.py --> from django.shortcuts import render
   def show_home
 main/urls.py -->
 
-
 За да ограничим кои менюта да се виждат и кои не в зависимост дали има логнат потребител създаваме
 папка Python Package main\templatetags\  нея файл  profiles.py
+
+След инсталацията на модули винаги пусаме pip freeze > requirements.txt
+във файла се запазват инсталираните допълнителни пакети. зареждат се с
+pip install -r requirements.txt
